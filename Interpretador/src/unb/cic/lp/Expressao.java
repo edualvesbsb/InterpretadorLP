@@ -1,15 +1,18 @@
 package unb.cic.lp;
 
-public class Expressao {
+public abstract class Expressao {
 
-	public Expressao() {
-		int n = 3;
-	}
+	/**
+	 * Avalia uma expressao retornando um valor 
+	 * abstrato. 
+	 * 
+	 * @return Valor que corresponde a avaliacao da expressao.
+	 * 
+	 * @throws ErroDeTipo Uma excecao de tipos ocorre quando 
+	 * os tipos forem inconsistentes. 
+	 */
+	public abstract Valor avaliar() throws ErroDeTipo;
+	public abstract Boolean checaTipo();
+	public abstract TipoExpressao recuperaTipo();
 	
-	public void mostrar() {
-		int l = 3 + 5;
-		System.out.println(l);
-	}
-	
-
 }
