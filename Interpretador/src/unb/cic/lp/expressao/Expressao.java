@@ -1,4 +1,7 @@
-package unb.cic.lp;
+package unb.cic.lp.expressao;
+
+import unb.cic.lp.ErroDeTipoException;
+import unb.cic.lp.valor.Valor;
 
 public abstract class Expressao {
 

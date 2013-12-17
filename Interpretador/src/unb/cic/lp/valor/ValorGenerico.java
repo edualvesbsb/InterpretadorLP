@@ -1,4 +1,4 @@
-package unb.cic.lp;
+package unb.cic.lp.valor;
 
 public abstract class ValorGenerico<T> extends Valor {
 
@@ -16,6 +16,5 @@ public abstract class ValorGenerico<T> extends Valor {
 	public Boolean checaTipo() {
 		return true;
 	}
-	
 	
 }

@@ -1,38 +1,44 @@
 package unb.cic.lp;
 
+import unb.cic.lp.expressao.Expressao;
+import unb.cic.lp.expressao.ExpressaoTernaria;
+import unb.cic.lp.expressao.TipoExpressao;
+import unb.cic.lp.valor.Valor;
+import unb.cic.lp.valor.ValorBooleano;
+
 /**
  * Classe que representa uma expressao do tipo Se. 
  * Uma expressao do tipo Se tem tres subexpressoes, 
  * @author rodrigobonifacio
  */
-public class ExpressaoSe extends Expressao {
+public class ExpressaoSe extends ExpressaoTernaria {
 	
-	private Expressao condicao;
-	private Expressao entao;
-	private Expressao senao;
+	public ExpressaoSe(Expressao exp1, Expressao exp2, Expressao exp3){
+		super(exp1, exp2, exp3);
+	}
 	
 	@Override
 	public Valor avaliar() throws ErroDeTipoException {
 		if (!checaTipo()){
 			throw new ErroDeTipoException();
 		}
-		ValorBooleano v1 = (ValorBooleano) condicao.avaliar();
+		ValorBooleano v1 = (ValorBooleano) exp1.avaliar();
 		if (v1.getValor()){
-			return entao.avaliar();
+			return exp2.avaliar();
 		}else{
-			return senao.avaliar();
+			return exp3.avaliar();
 		}
 	}
 
 	@Override
 	public Boolean checaTipo() {
-		return !recuperaTipo().equals(TipoExpressao.INVALIDO) && condicao.recuperaTipo().equals(TipoExpressao.BOOLEANO);
+		return !recuperaTipo().equals(TipoExpressao.INVALIDO) && exp1.recuperaTipo().equals(TipoExpressao.BOOLEANO);
 	}
 
 	@Override
 	public TipoExpressao recuperaTipo() {
-		if(entao.recuperaTipo().equals(senao.recuperaTipo())) {
-			return entao.recuperaTipo();
+		if(exp2.recuperaTipo().equals(exp3.recuperaTipo())) {
+			return exp2.recuperaTipo();
 		}
 		else {
 			return TipoExpressao.INVALIDO;

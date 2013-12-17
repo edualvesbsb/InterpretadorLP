@@ -1,4 +1,6 @@
-package unb.cic.lp;
+package unb.cic.lp.valor;
+
+import unb.cic.lp.expressao.TipoExpressao;
 
 public class ValorBooleano extends ValorGenerico<Boolean> {
 

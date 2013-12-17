@@ -1,10 +1,15 @@
 package unb.cic.lp;
 
-public class ExpressaoNegacao extends Expressao{
-	private Expressao expressao;
+import unb.cic.lp.expressao.Expressao;
+import unb.cic.lp.expressao.ExpressaoUnaria;
+import unb.cic.lp.expressao.TipoExpressao;
+import unb.cic.lp.valor.Valor;
+import unb.cic.lp.valor.ValorInteiro;
+
+public class ExpressaoNegacao extends ExpressaoUnaria{
 	
-	public ExpressaoNegacao(Expressao expressao){
-		this.expressao = expressao;
+	public ExpressaoNegacao(Expressao exp1){
+		super(exp1);
 	}
 	
 	public Valor avaliar() throws ErroDeTipoException {
@@ -12,7 +17,7 @@ public class ExpressaoNegacao extends Expressao{
 			throw new ErroDeTipoException();
 		}
 		
-		ValorInteiro v1 = (ValorInteiro)expressao.avaliar();
+		ValorInteiro v1 = (ValorInteiro)exp1.avaliar();
 		
 		return new ValorInteiro(- v1.getValor());
 	}
@@ -24,7 +29,7 @@ public class ExpressaoNegacao extends Expressao{
 
 	@Override
 	public TipoExpressao recuperaTipo() {
-		if(expressao.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
+		if(exp1.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
 			return TipoExpressao.INTEIRO;
 		}
 		return TipoExpressao.INVALIDO;

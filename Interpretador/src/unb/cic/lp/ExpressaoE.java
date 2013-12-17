@@ -1,9 +1,15 @@
 package unb.cic.lp;
 
+import unb.cic.lp.expressao.Expressao;
+import unb.cic.lp.expressao.ExpressaoBinaria;
+import unb.cic.lp.expressao.TipoExpressao;
+import unb.cic.lp.valor.Valor;
+import unb.cic.lp.valor.ValorBooleano;
+
 public class ExpressaoE extends ExpressaoBinaria {
 
-	public ExpressaoE(Expressao lhs, Expressao rhs) {
-		super(lhs, rhs);
+	public ExpressaoE(Expressao exp1, Expressao exp2) {
+		super(exp1, exp2);
 	}
 	
 	@Override
@@ -11,8 +17,8 @@ public class ExpressaoE extends ExpressaoBinaria {
 		if(!checaTipo()) {
 			throw new ErroDeTipoException();
 		}
-		ValorBooleano v1 = (ValorBooleano)lhs.avaliar();
-		ValorBooleano v2 = (ValorBooleano)rhs.avaliar();
+		ValorBooleano v1 = (ValorBooleano)exp1.avaliar();
+		ValorBooleano v2 = (ValorBooleano)exp2.avaliar();
 
 		return new ValorBooleano(v1.getValor() && v2.getValor());
 	}
@@ -24,7 +30,7 @@ public class ExpressaoE extends ExpressaoBinaria {
 
 	@Override
 	public TipoExpressao recuperaTipo() {
-		if(lhs.recuperaTipo().equals(TipoExpressao.BOOLEANO) && rhs.recuperaTipo().equals(TipoExpressao.BOOLEANO)) {
+		if(exp1.recuperaTipo().equals(TipoExpressao.BOOLEANO) && exp2.recuperaTipo().equals(TipoExpressao.BOOLEANO)) {
 			return TipoExpressao.BOOLEANO;
 		}
 		return TipoExpressao.INVALIDO;

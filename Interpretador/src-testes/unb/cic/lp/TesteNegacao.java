@@ -1,6 +1,8 @@
 package unb.cic.lp;
 
 import junit.framework.TestCase;
+import unb.cic.lp.expressao.Expressao;
+import unb.cic.lp.valor.ValorInteiro;
 
 public class TesteNegacao extends TestCase {
 	public void testNeg(){

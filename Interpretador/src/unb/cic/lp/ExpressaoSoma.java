@@ -1,9 +1,15 @@
 package unb.cic.lp;
 
+import unb.cic.lp.expressao.Expressao;
+import unb.cic.lp.expressao.ExpressaoBinaria;
+import unb.cic.lp.expressao.TipoExpressao;
+import unb.cic.lp.valor.Valor;
+import unb.cic.lp.valor.ValorInteiro;
+
 public class ExpressaoSoma extends ExpressaoBinaria {
 	
-	public ExpressaoSoma(Expressao lhs, Expressao rhs){
-		super(lhs, rhs);
+	public ExpressaoSoma(Expressao exp1, Expressao exp2){
+		super(exp1, exp2);
 	}
 	
 	public Valor avaliar() throws ErroDeTipoException {
@@ -11,8 +17,8 @@ public class ExpressaoSoma extends ExpressaoBinaria {
 			throw new ErroDeTipoException();
 		}
 		
-		ValorInteiro v1 = (ValorInteiro)lhs.avaliar();
-		ValorInteiro v2 = (ValorInteiro)rhs.avaliar();
+		ValorInteiro v1 = (ValorInteiro)exp1.avaliar();
+		ValorInteiro v2 = (ValorInteiro)exp2.avaliar();
 		
 		return new ValorInteiro(v1.getValor() + v2.getValor());
 	}
@@ -24,7 +30,7 @@ public class ExpressaoSoma extends ExpressaoBinaria {
 
 	@Override
 	public TipoExpressao recuperaTipo() {
-		if (lhs.recuperaTipo().equals(TipoExpressao.INTEIRO) && rhs.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
+		if (exp1.recuperaTipo().equals(TipoExpressao.INTEIRO) && exp2.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
 			return TipoExpressao.INTEIRO;
 		}
 		return TipoExpressao.INVALIDO;

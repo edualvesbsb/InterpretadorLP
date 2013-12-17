@@ -1,4 +1,4 @@
-package unb.cic.lp;
+package unb.cic.lp.expressao;
 
 public enum TipoExpressao {
 
