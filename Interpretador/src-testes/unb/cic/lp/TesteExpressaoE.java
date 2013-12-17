@@ -5,17 +5,17 @@ import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.valor.ValorBooleano;
 import unb.cic.lp.valor.ValorInteiro;
 
-public class TesteExpressaoSoma extends TestCase {
+public class TesteExpressaoE extends TestCase {
 
-	public void testSoma() {
-		ValorInteiro valor5 = new ValorInteiro(5);
-		ValorInteiro valor10 = new ValorInteiro(10);
+	public void testE() {
+		ValorBooleano valorV = new ValorBooleano(true);
+		ValorBooleano valorF = new ValorBooleano(false);
 		
-		Expressao soma = new ExpressaoSoma(valor5, valor10);
+		Expressao expressaoE = new ExpressaoE(valorV, valorF);
 		
 		try {
-			ValorInteiro resultado = (ValorInteiro)soma.avaliar();
-			assertEquals(new Integer(15), resultado.getValor());
+			ValorBooleano resultado = (ValorBooleano) expressaoE.avaliar();
+			assertEquals(new Boolean(false), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
 			e.printStackTrace();
@@ -27,10 +27,10 @@ public class TesteExpressaoSoma extends TestCase {
 		ValorInteiro valor5 = new ValorInteiro(5);
 		ValorBooleano valorF = new ValorBooleano(false);
 		
-		Expressao soma = new ExpressaoSoma(valor5, valorF);
+		Expressao expressaoE = new ExpressaoE(valor5, valorF);
 		
 		try {
-			soma.avaliar();
+			expressaoE.avaliar();
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}

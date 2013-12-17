@@ -4,7 +4,7 @@ import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.ExpressaoUnaria;
 import unb.cic.lp.expressao.TipoExpressao;
 import unb.cic.lp.valor.Valor;
-import unb.cic.lp.valor.ValorInteiro;
+import unb.cic.lp.valor.ValorBooleano;
 
 public class ExpressaoNegacao extends ExpressaoUnaria{
 	
@@ -17,20 +17,20 @@ public class ExpressaoNegacao extends ExpressaoUnaria{
 			throw new ErroDeTipoException();
 		}
 		
-		ValorInteiro v1 = (ValorInteiro)exp1.avaliar();
+		ValorBooleano v1 = (ValorBooleano)exp1.avaliar();
 		
-		return new ValorInteiro(- v1.getValor());
+		return new ValorBooleano(!v1.getValor());
 	}
 
 	@Override
 	public Boolean checaTipo() {
-		return recuperaTipo().equals(TipoExpressao.INTEIRO);
+		return recuperaTipo().equals(TipoExpressao.BOOLEANO);
 	}
 
 	@Override
 	public TipoExpressao recuperaTipo() {
-		if(exp1.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
-			return TipoExpressao.INTEIRO;
+		if(exp1.recuperaTipo().equals(TipoExpressao.BOOLEANO)) {
+			return TipoExpressao.BOOLEANO;
 		}
 		return TipoExpressao.INVALIDO;
 	}
