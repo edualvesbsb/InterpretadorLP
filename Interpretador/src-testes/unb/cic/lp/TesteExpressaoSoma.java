@@ -14,7 +14,7 @@ public class TesteExpressaoSoma extends TestCase {
 			ValorInteiro resultado = (ValorInteiro)soma.avaliar();
 			assertEquals(new Integer(15), resultado.getValor());
 		}
-		catch(ErroDeTipo e) {
+		catch(ErroDeTipoException e) {
 			e.printStackTrace();
 			fail();
 		}
@@ -28,14 +28,14 @@ public class TesteExpressaoSoma extends TestCase {
 		
 		try {
 			soma.avaliar();
-			System.out.println("chamou avaliar. esperavamos uma exce?‹o");
+			System.out.println("chamou avaliar. esperavamos uma exce?ï¿½o");
 			fail();
 		}
-		catch(ErroDeTipo e) {
+		catch(ErroDeTipoException e) {
 			assertTrue(true);
 		}
 //		catch(ErroDeTipo e) {
-//			System.out.println("tratando exce?‹o!!!!");
+//			System.out.println("tratando exce?ï¿½o!!!!");
 //			if(true) {
 //				throw new RuntimeException();
 //			}

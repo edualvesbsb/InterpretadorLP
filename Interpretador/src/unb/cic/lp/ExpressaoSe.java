@@ -1,26 +1,20 @@
 package unb.cic.lp;
 
 /**
- * Classe que representa uma expressao do tipo IF. 
- * Uma expressao do tipo IF tem tres subexpressoes, 
- * .... 
- * 
- * 
+ * Classe que representa uma expressao do tipo Se. 
+ * Uma expressao do tipo Se tem tres subexpressoes, 
  * @author rodrigobonifacio
- *
  */
-public class ExpressaoIF extends Expressao {
-
+public class ExpressaoSe extends Expressao {
 	
 	private Expressao condicao;
 	private Expressao entao;
 	private Expressao senao;
 	
 	@Override
-	public Valor avaliar() throws ErroDeTipo {
-		// TODO Auto-generated method stub
+	public Valor avaliar() throws ErroDeTipoException {
 		if (!checaTipo()){
-			throw new ErroDeTipo();
+			throw new ErroDeTipoException();
 		}
 		ValorBooleano v1 = (ValorBooleano) condicao.avaliar();
 		if (v1.getValor()){

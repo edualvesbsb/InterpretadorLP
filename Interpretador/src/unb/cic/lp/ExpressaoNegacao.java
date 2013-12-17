@@ -3,13 +3,13 @@ package unb.cic.lp;
 public class ExpressaoNegacao extends Expressao{
 	private Expressao expressao;
 	
-	public ExpressaoNegacao(Expressao valor){
-		expressao = valor;
+	public ExpressaoNegacao(Expressao expressao){
+		this.expressao = expressao;
 	}
 	
-	public Valor avaliar() throws ErroDeTipo {
+	public Valor avaliar() throws ErroDeTipoException {
 		if(!checaTipo()) {
-			throw new ErroDeTipo();
+			throw new ErroDeTipoException();
 		}
 		
 		ValorInteiro v1 = (ValorInteiro)expressao.avaliar();

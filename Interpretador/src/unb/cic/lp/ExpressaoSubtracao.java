@@ -1,15 +1,15 @@
 package unb.cic.lp;
 
-public class ExpressaoSubtracao extends ExpBin {
+public class ExpressaoSubtracao extends ExpressaoBinaria {
 
 	public ExpressaoSubtracao(Expressao lhs, Expressao rhs) {
 		super(lhs, rhs);
 	}
 
 	@Override
-	public Valor avaliar() throws ErroDeTipo {
+	public Valor avaliar() throws ErroDeTipoException {
 		if(!checaTipo()) {
-			throw new ErroDeTipo();
+			throw new ErroDeTipoException();
 		}
 		
 		ValorInteiro v1 = (ValorInteiro)lhs.avaliar();

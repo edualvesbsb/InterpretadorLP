@@ -1,11 +1,11 @@
 package unb.cic.lp;
 
 
-public abstract class ExpBin extends Expressao {
+public abstract class ExpressaoBinaria extends Expressao {
 	protected Expressao lhs;
 	protected Expressao rhs;
 	
-	public ExpBin(Expressao lhs, Expressao rhs){
+	public ExpressaoBinaria(Expressao lhs, Expressao rhs){
 		this.lhs = lhs;
 		this.rhs = rhs;
 	}

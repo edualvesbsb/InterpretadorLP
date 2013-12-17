@@ -14,7 +14,7 @@ public class TesteNegacao extends TestCase {
 			assertEquals(new Integer(-5), ((ValorInteiro)resultado.avaliar()).getValor());
 			assertEquals(new Integer(6), ((ValorInteiro)resultadoNeg.avaliar()).getValor());
 		}
-		catch(ErroDeTipo e) {
+		catch(ErroDeTipoException e) {
 			fail();
 		}
 	}

@@ -1,14 +1,14 @@
 package unb.cic.lp;
 
-public class ExpressaoSoma extends ExpBin {
+public class ExpressaoSoma extends ExpressaoBinaria {
 	
 	public ExpressaoSoma(Expressao lhs, Expressao rhs){
 		super(lhs, rhs);
 	}
 	
-	public Valor avaliar() throws ErroDeTipo {
+	public Valor avaliar() throws ErroDeTipoException {
 		if(!checaTipo()) {
-			throw new ErroDeTipo();
+			throw new ErroDeTipoException();
 		}
 		
 		ValorInteiro v1 = (ValorInteiro)lhs.avaliar();

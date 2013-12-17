@@ -1,15 +1,15 @@
 package unb.cic.lp;
 
-public class ExpressaoAnd extends ExpBin {
+public class ExpressaoE extends ExpressaoBinaria {
 
-	public ExpressaoAnd(Expressao lhs, Expressao rhs) {
+	public ExpressaoE(Expressao lhs, Expressao rhs) {
 		super(lhs, rhs);
 	}
 	
 	@Override
-	public Valor avaliar() throws ErroDeTipo {
+	public Valor avaliar() throws ErroDeTipoException {
 		if(!checaTipo()) {
-			throw new ErroDeTipo();
+			throw new ErroDeTipoException();
 		}
 		ValorBooleano v1 = (ValorBooleano)lhs.avaliar();
 		ValorBooleano v2 = (ValorBooleano)rhs.avaliar();

@@ -16,7 +16,7 @@ public class TesteExpressaoSubtracao extends TestCase{
 		
 			assertEquals(new Integer(5), resultado.getValor());
 		}
-		catch(ErroDeTipo e) {
+		catch(ErroDeTipoException e) {
 			fail();
 		}
 	}
