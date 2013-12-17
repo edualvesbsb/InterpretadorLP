@@ -18,10 +18,7 @@ public class ExpressaoSe extends ExpressaoTernaria {
 	}
 	
 	@Override
-	public Valor avaliar() throws ErroDeTipoException {
-		if (!checaTipo()){
-			throw new ErroDeTipoException();
-		}
+	protected Valor avaliarExpressao() throws ErroDeTipoException {
 		ValorBooleano v1 = (ValorBooleano) exp1.avaliar();
 		if (v1.getValor()){
 			return exp2.avaliar();

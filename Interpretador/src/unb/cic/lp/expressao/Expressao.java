@@ -14,7 +14,15 @@ public abstract class Expressao {
 	 * @throws ErroDeTipoException Uma excecao de tipos ocorre quando 
 	 * os tipos forem inconsistentes. 
 	 */
-	public abstract Valor avaliar() throws ErroDeTipoException;
+	
+	public Valor avaliar() throws ErroDeTipoException{
+		if(!checaTipo()) {
+			throw new ErroDeTipoException();
+		}
+		return avaliarExpressao();
+	}
+	
+	protected abstract Valor avaliarExpressao() throws ErroDeTipoException;
 	public abstract Boolean checaTipo();
 	public abstract TipoExpressao recuperaTipo();
 	

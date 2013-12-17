@@ -12,10 +12,8 @@ public class ExpressaoNegacao extends ExpressaoUnaria{
 		super(exp1);
 	}
 	
-	public Valor avaliar() throws ErroDeTipoException {
-		if(!checaTipo()) {
-			throw new ErroDeTipoException();
-		}
+	@Override
+	protected Valor avaliarExpressao() throws ErroDeTipoException {
 		
 		ValorBooleano v1 = (ValorBooleano)exp1.avaliar();
 		

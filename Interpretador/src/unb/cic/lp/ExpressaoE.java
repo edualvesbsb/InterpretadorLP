@@ -13,10 +13,7 @@ public class ExpressaoE extends ExpressaoBinaria {
 	}
 	
 	@Override
-	public Valor avaliar() throws ErroDeTipoException {
-		if(!checaTipo()) {
-			throw new ErroDeTipoException();
-		}
+	protected Valor avaliarExpressao() throws ErroDeTipoException {		
 		ValorBooleano v1 = (ValorBooleano)exp1.avaliar();
 		ValorBooleano v2 = (ValorBooleano)exp2.avaliar();
 

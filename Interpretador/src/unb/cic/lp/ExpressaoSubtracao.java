@@ -13,10 +13,7 @@ public class ExpressaoSubtracao extends ExpressaoBinaria {
 	}
 
 	@Override
-	public Valor avaliar() throws ErroDeTipoException {
-		if(!checaTipo()) {
-			throw new ErroDeTipoException();
-		}
+	protected Valor avaliarExpressao() throws ErroDeTipoException {
 		
 		ValorInteiro v1 = (ValorInteiro)exp1.avaliar();
 		ValorInteiro v2 = (ValorInteiro)exp2.avaliar();
