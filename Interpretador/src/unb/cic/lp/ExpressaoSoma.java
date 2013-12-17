@@ -13,10 +13,10 @@ public class ExpressaoSoma extends ExpressaoBinaria {
 	}
 	
 	@Override
-	protected Valor avaliarExpressao() throws ErroDeTipoException {
+	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
 		
-		ValorInteiro v1 = (ValorInteiro)exp1.avaliar();
-		ValorInteiro v2 = (ValorInteiro)exp2.avaliar();
+		ValorInteiro v1 = (ValorInteiro)exp1.avaliar(env);
+		ValorInteiro v2 = (ValorInteiro)exp2.avaliar(env);
 		
 		return new ValorInteiro(v1.getValor() + v2.getValor());
 	}

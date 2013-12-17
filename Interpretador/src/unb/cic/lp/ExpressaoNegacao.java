@@ -13,9 +13,9 @@ public class ExpressaoNegacao extends ExpressaoUnaria{
 	}
 	
 	@Override
-	protected Valor avaliarExpressao() throws ErroDeTipoException {
+	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
 		
-		ValorBooleano v1 = (ValorBooleano)exp1.avaliar();
+		ValorBooleano v1 = (ValorBooleano)exp1.avaliar(env);
 		
 		return new ValorBooleano(!v1.getValor());
 	}

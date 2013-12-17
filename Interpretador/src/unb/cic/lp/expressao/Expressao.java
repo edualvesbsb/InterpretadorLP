@@ -1,5 +1,6 @@
 package unb.cic.lp.expressao;
 
+import unb.cic.lp.Ambiente;
 import unb.cic.lp.ErroDeTipoException;
 import unb.cic.lp.valor.Valor;
 
@@ -15,14 +16,14 @@ public abstract class Expressao {
 	 * os tipos forem inconsistentes. 
 	 */
 	
-	public Valor avaliar() throws ErroDeTipoException{
+	public Valor avaliar(Ambiente env) throws ErroDeTipoException{
 		if(!checaTipo()) {
 			throw new ErroDeTipoException();
 		}
-		return avaliarExpressao();
+		return avaliarExpressao(env);
 	}
 	
-	protected abstract Valor avaliarExpressao() throws ErroDeTipoException;
+	protected abstract Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException;
 	public abstract Boolean checaTipo();
 	public abstract TipoExpressao recuperaTipo();
 	

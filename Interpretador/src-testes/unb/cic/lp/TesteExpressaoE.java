@@ -14,7 +14,7 @@ public class TesteExpressaoE extends TestCase {
 		Expressao expressaoE = new ExpressaoE(valorV, valorF);
 		
 		try {
-			ValorBooleano resultado = (ValorBooleano) expressaoE.avaliar();
+			ValorBooleano resultado = (ValorBooleano) expressaoE.avaliar(new Ambiente());
 			assertEquals(new Boolean(false), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
@@ -30,7 +30,7 @@ public class TesteExpressaoE extends TestCase {
 		Expressao expressaoE = new ExpressaoE(valor5, valorF);
 		
 		try {
-			expressaoE.avaliar();
+			expressaoE.avaliar(new Ambiente());
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}

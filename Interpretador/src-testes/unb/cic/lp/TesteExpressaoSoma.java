@@ -14,7 +14,7 @@ public class TesteExpressaoSoma extends TestCase {
 		Expressao soma = new ExpressaoSoma(valor5, valor10);
 		
 		try {
-			ValorInteiro resultado = (ValorInteiro)soma.avaliar();
+			ValorInteiro resultado = (ValorInteiro)soma.avaliar(new Ambiente());
 			assertEquals(new Integer(15), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
@@ -30,7 +30,7 @@ public class TesteExpressaoSoma extends TestCase {
 		Expressao soma = new ExpressaoSoma(valor5, valorF);
 		
 		try {
-			soma.avaliar();
+			soma.avaliar(new Ambiente());
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}

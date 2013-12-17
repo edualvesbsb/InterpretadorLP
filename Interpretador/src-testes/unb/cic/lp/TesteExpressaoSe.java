@@ -16,7 +16,7 @@ public class TesteExpressaoSe extends TestCase {
 		Expressao se = new ExpressaoSe(condicaoV, entao, senao);
 		
 		try {
-			ValorInteiro resultado = (ValorInteiro)se.avaliar();
+			ValorInteiro resultado = (ValorInteiro)se.avaliar(new Ambiente());
 			assertEquals(new Integer(5), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
@@ -27,7 +27,7 @@ public class TesteExpressaoSe extends TestCase {
 		se = new ExpressaoSe(condicaoF, entao, senao);
 		
 		try {
-			ValorInteiro resultado = (ValorInteiro)se.avaliar();
+			ValorInteiro resultado = (ValorInteiro)se.avaliar(new Ambiente());
 			assertEquals(new Integer(10), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
@@ -44,7 +44,7 @@ public class TesteExpressaoSe extends TestCase {
 		Expressao se = new ExpressaoSe(condicao, entao, senao);
 		
 		try {
-			se.avaliar();
+			se.avaliar(new Ambiente());
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}

@@ -13,9 +13,9 @@ public class ExpressaoE extends ExpressaoBinaria {
 	}
 	
 	@Override
-	protected Valor avaliarExpressao() throws ErroDeTipoException {		
-		ValorBooleano v1 = (ValorBooleano)exp1.avaliar();
-		ValorBooleano v2 = (ValorBooleano)exp2.avaliar();
+	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {		
+		ValorBooleano v1 = (ValorBooleano)exp1.avaliar(env);
+		ValorBooleano v2 = (ValorBooleano)exp2.avaliar(env);
 
 		return new ValorBooleano(v1.getValor() && v2.getValor());
 	}

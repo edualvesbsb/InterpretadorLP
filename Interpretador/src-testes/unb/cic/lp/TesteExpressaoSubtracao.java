@@ -14,7 +14,7 @@ public class TesteExpressaoSubtracao extends TestCase{
 
 			Expressao subtracao = new ExpressaoSubtracao(valor10, valor5);
 		
-			ValorInteiro resultado = (ValorInteiro)subtracao.avaliar();
+			ValorInteiro resultado = (ValorInteiro)subtracao.avaliar(new Ambiente());
 		
 			assertEquals(new Integer(5), resultado.getValor());
 		}
@@ -30,7 +30,7 @@ public class TesteExpressaoSubtracao extends TestCase{
 		Expressao subtracao = new ExpressaoSubtracao(valor5, valorF);
 		
 		try {
-			subtracao.avaliar();
+			subtracao.avaliar(new Ambiente());
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}

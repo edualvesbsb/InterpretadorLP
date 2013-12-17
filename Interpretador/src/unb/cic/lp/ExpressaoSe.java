@@ -18,12 +18,12 @@ public class ExpressaoSe extends ExpressaoTernaria {
 	}
 	
 	@Override
-	protected Valor avaliarExpressao() throws ErroDeTipoException {
-		ValorBooleano v1 = (ValorBooleano) exp1.avaliar();
+	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
+		ValorBooleano v1 = (ValorBooleano) exp1.avaliar(env);
 		if (v1.getValor()){
-			return exp2.avaliar();
+			return exp2.avaliar(env);
 		}else{
-			return exp3.avaliar();
+			return exp3.avaliar(env);
 		}
 	}
 

@@ -14,8 +14,8 @@ public class TesteExpressaoNegacao extends TestCase {
 			Expressao expressaoNegacao1 = new ExpressaoNegacao(valorV);
 			Expressao expressaoNegacao2 = new ExpressaoNegacao(valorF);
 			
-			assertEquals(new Boolean(false), ((ValorBooleano)expressaoNegacao1.avaliar()).getValor());
-			assertEquals(new Boolean(true), ((ValorBooleano)expressaoNegacao2.avaliar()).getValor());
+			assertEquals(new Boolean(false), ((ValorBooleano)expressaoNegacao1.avaliar(new Ambiente())).getValor());
+			assertEquals(new Boolean(true), ((ValorBooleano)expressaoNegacao2.avaliar(new Ambiente())).getValor());
 		}
 		catch(ErroDeTipoException e) {
 			fail();
@@ -28,7 +28,7 @@ public class TesteExpressaoNegacao extends TestCase {
 		Expressao negacao = new ExpressaoNegacao(valor5);
 		
 		try {
-			negacao.avaliar();
+			negacao.avaliar(new Ambiente());
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}
