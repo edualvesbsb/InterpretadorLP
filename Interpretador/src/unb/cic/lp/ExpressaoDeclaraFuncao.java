@@ -6,21 +6,25 @@ import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.ExpressaoBinaria;
 import unb.cic.lp.expressao.TipoExpressao;
 import unb.cic.lp.valor.Valor;
-import unb.cic.lp.valor.ValorInteiro;
 
-public class ExpressaoSoma extends ExpressaoBinaria {
+public class ExpressaoDeclaraFuncao extends ExpressaoBinaria{
+	private String id;
+	private List<Argumento> argumentos;
 	
-	public ExpressaoSoma(Expressao exp1, Expressao exp2){
+	public ExpressaoDeclaraFuncao(String id, Expressao exp1, List<Argumento> argumentos, Expressao exp2){
 		super(exp1, exp2);
+		this.id = id;
+		this.argumentos = argumentos;
 	}
 	
 	@Override
 	protected Valor avaliarExpressao(Ambiente env, List<DeclaracaoFuncao> listaFuncoes) throws ErroDeTipoException {
-		
-		ValorInteiro v1 = (ValorInteiro)exp1.avaliar(env, listaFuncoes);
-		ValorInteiro v2 = (ValorInteiro)exp2.avaliar(env, listaFuncoes);
-		
-		return new ValorInteiro(v1.getValor() + v2.getValor());
+		DeclaracaoFuncao df = new DeclaracaoFuncao();
+		df.setArgumentosFormais(argumentos);
+		df.setExpressao(this.exp1);
+		df.setId(this.id);
+		listaFuncoes.add(df);
+		return exp2.avaliar(env, listaFuncoes);
 	}
 
 	@Override
@@ -30,7 +34,7 @@ public class ExpressaoSoma extends ExpressaoBinaria {
 
 	@Override
 	public TipoExpressao recuperaTipo() {
-		if (exp1.recuperaTipo().equals(TipoExpressao.INTEIRO) && exp2.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
+		if(exp1.recuperaTipo().equals(TipoExpressao.INTEIRO) && exp2.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
 			return TipoExpressao.INTEIRO;
 		}
 		return TipoExpressao.INVALIDO;

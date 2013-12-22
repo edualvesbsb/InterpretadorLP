@@ -1,5 +1,7 @@
 package unb.cic.lp;
 
+import java.util.List;
+
 import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.ExpressaoTernaria;
 import unb.cic.lp.expressao.TipoExpressao;
@@ -18,12 +20,12 @@ public class ExpressaoSe extends ExpressaoTernaria {
 	}
 	
 	@Override
-	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
-		ValorBooleano v1 = (ValorBooleano) exp1.avaliar(env);
+	protected Valor avaliarExpressao(Ambiente env, List<DeclaracaoFuncao> listaFuncoes) throws ErroDeTipoException {
+		ValorBooleano v1 = (ValorBooleano) exp1.avaliar(env, listaFuncoes);
 		if (v1.getValor()){
-			return exp2.avaliar(env);
+			return exp2.avaliar(env, listaFuncoes);
 		}else{
-			return exp3.avaliar(env);
+			return exp3.avaliar(env, listaFuncoes);
 		}
 	}
 

@@ -1,5 +1,7 @@
 package unb.cic.lp;
 
+import java.util.List;
+
 import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.ExpressaoBinaria;
 import unb.cic.lp.expressao.TipoExpressao;
@@ -14,12 +16,11 @@ public class ExpressaoLet extends ExpressaoBinaria{
 	}
 	
 	@Override
-	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
+	protected Valor avaliarExpressao(Ambiente env, List<DeclaracaoFuncao> listaFuncoes) throws ErroDeTipoException {
 		env.adicionarPar(this.id, this.exp1);
-		return exp2.avaliar(env);
+		return exp2.avaliar(env, listaFuncoes);
 	}
 
-	//FIXME: Let deverá suportar operações booleanas e inteiras
 	@Override
 	public Boolean checaTipo() {
 		return recuperaTipo().equals(TipoExpressao.INTEIRO);

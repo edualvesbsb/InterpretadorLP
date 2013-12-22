@@ -1,5 +1,7 @@
 package unb.cic.lp;
 
+import java.util.List;
+
 import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.ExpressaoBinaria;
 import unb.cic.lp.expressao.TipoExpressao;
@@ -13,10 +15,10 @@ public class ExpressaoSubtracao extends ExpressaoBinaria {
 	}
 
 	@Override
-	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
+	protected Valor avaliarExpressao(Ambiente env, List<DeclaracaoFuncao> listaFuncoes) throws ErroDeTipoException {
 		
-		ValorInteiro v1 = (ValorInteiro)exp1.avaliar(env);
-		ValorInteiro v2 = (ValorInteiro)exp2.avaliar(env);
+		ValorInteiro v1 = (ValorInteiro)exp1.avaliar(env, listaFuncoes);
+		ValorInteiro v2 = (ValorInteiro)exp2.avaliar(env, listaFuncoes);
 		
 		return new ValorInteiro(v1.getValor() - v2.getValor());
 	}

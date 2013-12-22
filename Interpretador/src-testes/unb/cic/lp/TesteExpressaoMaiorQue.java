@@ -8,18 +8,29 @@ import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.valor.ValorBooleano;
 import unb.cic.lp.valor.ValorInteiro;
 
-public class TesteExpressaoSoma extends TestCase {
+public class TesteExpressaoMaiorQue extends TestCase {
 
-	public void testSoma() {
+	public void testMaiorQue() {
 		ValorInteiro valor5 = new ValorInteiro(5);
 		ValorInteiro valor10 = new ValorInteiro(10);
 		List<DeclaracaoFuncao> listaFuncoes = new ArrayList<DeclaracaoFuncao>();
 		
-		Expressao soma = new ExpressaoSoma(valor5, valor10);
+		Expressao mq = new ExpressaoMaiorQue(valor5, valor10);
 		
 		try {
-			ValorInteiro resultado = (ValorInteiro)soma.avaliar(new Ambiente(), listaFuncoes);
-			assertEquals(new Integer(15), resultado.getValor());
+			ValorBooleano resultado = (ValorBooleano)mq.avaliar(new Ambiente(), listaFuncoes);
+			assertEquals(new Boolean(false), resultado.getValor());
+		}
+		catch(ErroDeTipoException e) {
+			e.printStackTrace();
+			fail();
+		}
+		
+		mq = new ExpressaoMaiorQue(valor10, valor5);
+		
+		try {
+			ValorBooleano resultado = (ValorBooleano)mq.avaliar(new Ambiente(), listaFuncoes);
+			assertEquals(new Boolean(true), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
 			e.printStackTrace();
@@ -32,10 +43,10 @@ public class TesteExpressaoSoma extends TestCase {
 		ValorBooleano valorF = new ValorBooleano(false);
 		List<DeclaracaoFuncao> listaFuncoes = new ArrayList<DeclaracaoFuncao>();
 		
-		Expressao soma = new ExpressaoSoma(valor5, valorF);
+		Expressao mq = new ExpressaoMaiorQue(valor5, valorF);
 		
 		try {
-			soma.avaliar(new Ambiente(), listaFuncoes);
+			mq.avaliar(new Ambiente(), listaFuncoes);
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}

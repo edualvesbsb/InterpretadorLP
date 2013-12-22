@@ -1,5 +1,7 @@
 package unb.cic.lp;
 
+import java.util.List;
+
 import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.TipoExpressao;
 import unb.cic.lp.valor.Valor;
@@ -13,9 +15,9 @@ public class ExpressaoRefId extends Expressao {
 	}
 	
 	@Override
-	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
+	protected Valor avaliarExpressao(Ambiente env, List<DeclaracaoFuncao> listaFuncoes) throws ErroDeTipoException {
 		Expressao expressao = env.obterExpressao(id);		
-		return expressao.avaliar(env);
+		return expressao.avaliar(env, listaFuncoes);
 	}
 
 	@Override
@@ -25,12 +27,7 @@ public class ExpressaoRefId extends Expressao {
 
 	@Override
 	public TipoExpressao recuperaTipo() {
-		//FIXME: Corrigir
-//		if(env.obterExpressao(id).recuperaTipo().equals(TipoExpressao.INTEIRO)) {
-//			return TipoExpressao.INTEIRO;
-//		}
 		return TipoExpressao.INTEIRO;
-//		return TipoExpressao.INVALIDO;
 	}
 
 }

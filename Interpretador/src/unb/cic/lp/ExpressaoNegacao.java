@@ -1,5 +1,7 @@
 package unb.cic.lp;
 
+import java.util.List;
+
 import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.ExpressaoUnaria;
 import unb.cic.lp.expressao.TipoExpressao;
@@ -13,9 +15,9 @@ public class ExpressaoNegacao extends ExpressaoUnaria{
 	}
 	
 	@Override
-	protected Valor avaliarExpressao(Ambiente env) throws ErroDeTipoException {
+	protected Valor avaliarExpressao(Ambiente env, List<DeclaracaoFuncao> listaFuncoes) throws ErroDeTipoException {
 		
-		ValorBooleano v1 = (ValorBooleano)exp1.avaliar(env);
+		ValorBooleano v1 = (ValorBooleano)exp1.avaliar(env, listaFuncoes);
 		
 		return new ValorBooleano(!v1.getValor());
 	}

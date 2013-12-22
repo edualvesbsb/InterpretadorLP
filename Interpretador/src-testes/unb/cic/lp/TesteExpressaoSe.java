@@ -1,5 +1,8 @@
 package unb.cic.lp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.TestCase;
 import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.valor.ValorBooleano;
@@ -12,11 +15,12 @@ public class TesteExpressaoSe extends TestCase {
 		ValorBooleano condicaoF = new ValorBooleano(false);
 		ValorInteiro entao = new ValorInteiro(5);
 		ValorInteiro senao = new ValorInteiro(10);
+		List<DeclaracaoFuncao> listaFuncoes = new ArrayList<DeclaracaoFuncao>();
 		
 		Expressao se = new ExpressaoSe(condicaoV, entao, senao);
 		
 		try {
-			ValorInteiro resultado = (ValorInteiro)se.avaliar(new Ambiente());
+			ValorInteiro resultado = (ValorInteiro)se.avaliar(new Ambiente(), listaFuncoes);
 			assertEquals(new Integer(5), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
@@ -27,7 +31,7 @@ public class TesteExpressaoSe extends TestCase {
 		se = new ExpressaoSe(condicaoF, entao, senao);
 		
 		try {
-			ValorInteiro resultado = (ValorInteiro)se.avaliar(new Ambiente());
+			ValorInteiro resultado = (ValorInteiro)se.avaliar(new Ambiente(), listaFuncoes);
 			assertEquals(new Integer(10), resultado.getValor());
 		}
 		catch(ErroDeTipoException e) {
@@ -40,11 +44,12 @@ public class TesteExpressaoSe extends TestCase {
 		ValorInteiro condicao = new ValorInteiro(3);
 		ValorInteiro entao = new ValorInteiro(5);
 		ValorInteiro senao = new ValorInteiro(10);
+		List<DeclaracaoFuncao> listaFuncoes = new ArrayList<DeclaracaoFuncao>();
 		
 		Expressao se = new ExpressaoSe(condicao, entao, senao);
 		
 		try {
-			se.avaliar(new Ambiente());
+			se.avaliar(new Ambiente(), listaFuncoes);
 			System.out.println("chamou avaliar. esperavamos uma exceção");
 			fail();
 		}

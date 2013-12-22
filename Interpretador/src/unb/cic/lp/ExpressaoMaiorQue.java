@@ -6,11 +6,12 @@ import unb.cic.lp.expressao.Expressao;
 import unb.cic.lp.expressao.ExpressaoBinaria;
 import unb.cic.lp.expressao.TipoExpressao;
 import unb.cic.lp.valor.Valor;
+import unb.cic.lp.valor.ValorBooleano;
 import unb.cic.lp.valor.ValorInteiro;
 
-public class ExpressaoSoma extends ExpressaoBinaria {
+public class ExpressaoMaiorQue extends ExpressaoBinaria {
 	
-	public ExpressaoSoma(Expressao exp1, Expressao exp2){
+	public ExpressaoMaiorQue(Expressao exp1, Expressao exp2){
 		super(exp1, exp2);
 	}
 	
@@ -20,18 +21,22 @@ public class ExpressaoSoma extends ExpressaoBinaria {
 		ValorInteiro v1 = (ValorInteiro)exp1.avaliar(env, listaFuncoes);
 		ValorInteiro v2 = (ValorInteiro)exp2.avaliar(env, listaFuncoes);
 		
-		return new ValorInteiro(v1.getValor() + v2.getValor());
+		if(v1.getValor() > v2.getValor()){
+			return new ValorBooleano(true);
+		}else{
+			return new ValorBooleano(false);
+		}
 	}
 
 	@Override
 	public Boolean checaTipo() {
-		return recuperaTipo().equals(TipoExpressao.INTEIRO);
+		return recuperaTipo().equals(TipoExpressao.BOOLEANO);
 	}
 
 	@Override
 	public TipoExpressao recuperaTipo() {
 		if (exp1.recuperaTipo().equals(TipoExpressao.INTEIRO) && exp2.recuperaTipo().equals(TipoExpressao.INTEIRO)) {
-			return TipoExpressao.INTEIRO;
+			return TipoExpressao.BOOLEANO;
 		}
 		return TipoExpressao.INVALIDO;
 	}
